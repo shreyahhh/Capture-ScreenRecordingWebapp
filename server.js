@@ -16,10 +16,12 @@ const PORT = process.env.PORT || 8080;
 
 // Middleware configuration
 // Configure CORS to allow requests from frontend URL
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true
-}));
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || process.env.FRONTEND_URL || 'http://localhost:3001',
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 // Parse JSON bodies
 app.use(express.json());
