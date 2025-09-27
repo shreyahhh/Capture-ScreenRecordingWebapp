@@ -100,7 +100,7 @@ export function ScreenRecorder() {
       })
 
       // Request microphone access (optional)
-      let audioStream = null
+      let audioStream: MediaStream | null = null
       try {
         audioStream = await navigator.mediaDevices.getUserMedia({ audio: true })
       } catch (audioError) {
