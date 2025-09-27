@@ -18,8 +18,8 @@ const PORT = process.env.PORT || 8080;
 // Configure CORS to allow requests from frontend URL
 const corsOptions = {
   origin: [
-    'https://capture-screen-recorder.vercel.app',
-    'https://capture-screen-recorder.onrender.com',
+    process.env.FRONTEND_URL || 'https://capture-screen-recorder.vercel.app',
+    process.env.CORS_ORIGIN || 'https://capture-screen-recorder.vercel.app',
     'http://localhost:3001',
     'http://localhost:3000'
   ],
