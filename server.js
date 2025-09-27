@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8080;
 // Middleware configuration
 // Configure CORS to allow requests from frontend URL
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || process.env.FRONTEND_URL || 'http://localhost:3001',
+  origin: process.env.CORS_ORIGIN || process.env.FRONTEND_URL || 'http://localhost:3000',
   credentials: true,
   optionsSuccessStatus: 200
 };
@@ -39,6 +39,19 @@ const connectDB = async () => {
 
 // Connect to database
 connectDB();
+
+// Root route
+app.get('/', (req, res) => {
+  res.json({ 
+    message: "Screen Recorder Backend API", 
+    version: "1.0.0",
+    status: "running",
+    endpoints: {
+      test: "/api/test",
+      recordings: "/api/recordings"
+    }
+  });
+});
 
 // Test route
 app.get('/api/test', (req, res) => {
